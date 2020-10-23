@@ -128,7 +128,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
 
   def then_i_can_see_the_postcode_lookup_form
     assert page.has_text?(I18n.t("coronavirus_local_restrictions.lookup.title"))
-    assert page.has_text?(I18n.t("coronavirus_local_restrictions.lookup.input_label"))
+    assert page.has_text?(I18n.t("coronavirus_local_restrictions.royal_mail_lookup.link_text"))
   end
 
   def then_i_enter_a_valid_english_postcode
@@ -143,7 +143,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_english_postcode_with_a_future_level_two_restriction
@@ -158,7 +158,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_english_postcode_with_a_future_level_three_restriction
@@ -173,20 +173,20 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_english_postcode_with_an_extra_special_character
     stub_mapit_has_a_postcode_and_areas("E1 8QS", [], [level_two_area])
 
-    fill_in "Enter your postcode", with: ".e18qs"
+    fill_in "Enter a full postcode", with: ".e18qs"
   end
 
   def then_i_enter_a_valid_english_postcode_in_tier_two
     postcode = "E1 8QS"
     stub_mapit_has_a_postcode_and_areas(postcode, [], [level_two_area])
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_english_postcode_in_tier_three
@@ -201,7 +201,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_welsh_postcode
@@ -214,7 +214,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_scottish_postcode
@@ -227,7 +227,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def then_i_enter_a_valid_northern_ireland_postcode
@@ -240,7 +240,7 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     ]
     stub_mapit_has_a_postcode_and_areas(postcode, [], areas)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def when_i_enter_a_valid_postcode_that_returns_no_results
@@ -250,11 +250,11 @@ class CoronavirusLocalRestrictionsTest < ActionDispatch::IntegrationTest
     stub_request(:get, "#{mapit_endpoint}/postcode/" + postcode.tr(" ", "+") + ".json")
         .to_return(body: { "postcode" => postcode.to_s, "areas" => {} }.to_json, status: 200)
 
-    fill_in "Enter your postcode", with: postcode
+    fill_in "Enter a full postcode", with: postcode
   end
 
   def when_i_enter_an_invalid_postcode
-    fill_in "Enter your postcode", with: "Hello"
+    fill_in "Enter a full postcode", with: "Hello"
   end
 
   def then_i_click_on_find
