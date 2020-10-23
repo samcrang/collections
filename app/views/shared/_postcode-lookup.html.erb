@@ -10,13 +10,12 @@
     <%= render "govuk_publishing_components/components/input", {
           id: "postcodeLookup",
           label: {
-            text: input_label
+            text: sanitize(t("coronavirus_local_restrictions.lookup.input_label"))
           },
-          heading_size: "s",
           error_message: input_error,
           value: input_value,
           name: "postcode-lookup",
-          hint: hint_text,
+          hint: sanitize(t("coronavirus_local_restrictions.lookup.hint_text")),
           invalid: input_error ? 'true' : 'false',
           autocomplete: "postal-code",
         } %>
