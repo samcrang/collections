@@ -1,24 +1,6 @@
-.youtube__video-placeholder {
-  background-color: govuk-colour('white');
-  position: relative;
-  padding: 110px 0;
-  border: solid 2px govuk-colour("black");
-  text-align: center;
-  margin-bottom: govuk-spacing(2);
-
-  .govuk-body {
-    margin: 0;
-    color: govuk-colour("black");
-  }
-
-  .youtube__bold {
-    font-weight: bold;
-  }
-}
-
 .youtube__video-logo {
   @include govuk-font(19, $weight: bold, $line-height: 1);
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   padding: govuk-spacing(1);
@@ -28,6 +10,8 @@
   margin: govuk-spacing(3);
   border: solid 1px govuk-colour("black");
   text-transform: uppercase;
+  float: left;
+  z-index: 1;
 
   &:before {
     content: "";
@@ -41,7 +25,26 @@
   }
 }
 
+.youtube__video-wrapper--cookies-accepted {
+  .youtube__video-logo {
+    @include govuk-visually-hidden;
+  }
+}
+
+.youtube__video-placeholder {
+  background-color: govuk-colour('white');
+  position: relative;
+  border: solid 2px govuk-colour("black");
+  text-align: center;
+  margin-bottom: govuk-spacing(2);
+  padding: 110px 0;
+}
+
 .youtube__video-wrapper--inverse {
+  .youtube__video-placeholder {
+    color: govuk-colour("black");
+  }
+
   .govuk-details__summary {
     color: govuk-colour('white');
 

@@ -20,8 +20,12 @@
 //= require modules/coronavirus-track-local-restrictions
 //= require modules/coronavirus-track-local-restriction-results
 //= require modules/track-timeline-links
+//= require modules/youtube-player
 
 $(document).on('ready', function(){
   var toggleAttribute = new GOVUK.Modules.ToggleAttribute();
   toggleAttribute.start($('[data-module=toggle-attribute]'));
+
+  var youTubePlayer = new GOVUK.Modules.YouTubePlayer();
+  youTubePlayer.start($('.youtube__video-wrapper'));
 });
