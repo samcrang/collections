@@ -1,4 +1,5 @@
 class CoronavirusLocalRestrictionsController < ApplicationController
+  enable_request_formats results: :json
   skip_before_action :verify_authenticity_token, only: [:results]
 
   def show
@@ -47,7 +48,18 @@ class CoronavirusLocalRestrictionsController < ApplicationController
 
       @restriction = restrictions.compact.first
 
-      render
+      respond_to do |f|
+        f.html do
+          render
+        end
+        f.json do
+          render json: {
+            area_name: @restriction.area_name,
+            gss_code: @restriction.gss_code,
+            current_alert_level: @restriction.current_alert_level,
+          }
+        end
+      end
     end
   end
 
