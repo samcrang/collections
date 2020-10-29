@@ -6,8 +6,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Modules.YouTubePlayer = function () {
     this.start = function ($element) {
-      const consentCookie = window.GOVUK.getConsentCookie()
-      if (consentCookie && consentCookie['usage']) {
+      var consentCookie = window.GOVUK.getConsentCookie()
+      if (consentCookie && consentCookie.usage) {
         $element.addClass('youtube__video-wrapper--cookies-accepted')
       }
     }

@@ -19,17 +19,13 @@
       <strong>
         <a href="<%= no_cookies_change_settings_link %>" class="govuk-link">
           <%= no_cookies_change_settings_text %>
+          <br aria-hidden="true">
+          <%= no_cookies_to_watch_text %>
         </a>
       </strong>
-      <span role="text">
-        <br>
-        <strong>
-          <%= no_cookies_to_watch_text %>
-        </strong>
-        <br>
-        <%= no_cookies_or_text %>
-        <br>
-      </span>
+      <br aria-hidden="true">
+      <%= no_cookies_or_text %>
+      <br aria-hidden="true">
       <a
           href="<%= youtube_video_url %>"
           class="govuk-body govuk-link"
